@@ -1,0 +1,5 @@
+export default {
+  BACKGROUND_COLOR: '#FFFFFF',
+  BORDER_COLOR: '#D7D6DA',
+  CONTACT_ICON_COLOR: '#FF8C00',
+};

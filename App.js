@@ -1,21 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+import ContactsListScreen from './screens/ContactsListScreen';
+import IndividualContactsScreen from './screens/IndividualContactScreen';
+
+const Stack = createStackNavigator();
+
+// const screenOptions = ({navigation}) => ({
+//   headerLeft: (props) => (
+//       <TouchableOpacity
+//         onPress={() => {
+//           navigation.goBack();
+//         }}
+//         style={{
+//           marginTop: -5,
+//           paddingBottom: 5,
+//           paddingLeft: 22.5,
+//           paddingRight: 22
+//         }}>
+//           <Text>Hello</Text>
+//       </TouchableOpacity>
+//     ),
+//   gestureEnabled: true
+// });
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="ContactsList">
+        <Stack.Screen 
+          name="ContactsList"
+          component={ContactsListScreen}
+          options={({navigation}) => ({
+            title: 'Contacts',
+            headerRight: () => (
+              <Button onPress={() => navigation.navigate('IndividualContacts')} title="Right" />
+            ),
+            headerLeft: () => (
+              <Button onPress={() => navigation.navigate('IndividualContacts')} title="Left" />
+            ),
+          })
+          } />
+        <Stack.Screen name="IndividualContacts" component={IndividualContactsScreen} options={{title: ''}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
