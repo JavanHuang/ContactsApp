@@ -1,18 +1,23 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import colors from '../assets/colors/colors';
 
-const navigateToContact = (contact) => {
-  console.log(contact);
-};
+import {ContactIcon} from './ContactIcon';
 
 export const Contact = ({contact}) => {
+  const navigation = useNavigation();
+
+  const navigateToContact = () => {
+    navigation.navigate('IndividualContact', {contact});
+  };
+  
   return (
     <TouchableOpacity
-      onPress={() => navigateToContact(contact)}
+      onPress={() => navigateToContact()}
       style={styles.contactContainer}>
-      <View style={styles.circle} />
+      <ContactIcon size={60}/>
       <Text
         style={styles.text}>{contact.firstName} {contact.lastName}</Text>
     </TouchableOpacity>
@@ -31,13 +36,8 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: 'center',
+    color: colors.BLACK_FONT_COLOR,
     paddingLeft: 10,
     fontSize: 20,
-  },
-  circle: {
-    width: 60,
-    height: 60,
-    borderRadius: 60/2,
-    backgroundColor: colors.CONTACT_ICON_COLOR
   }
 });

@@ -4,27 +4,11 @@ import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import ContactsListScreen from './screens/ContactsListScreen';
-import IndividualContactsScreen from './screens/IndividualContactScreen';
+import IndividualContactScreen from './screens/IndividualContactScreen';
+
+import colors from './assets/colors/colors';
 
 const Stack = createStackNavigator();
-
-// const screenOptions = ({navigation}) => ({
-//   headerLeft: (props) => (
-//       <TouchableOpacity
-//         onPress={() => {
-//           navigation.goBack();
-//         }}
-//         style={{
-//           marginTop: -5,
-//           paddingBottom: 5,
-//           paddingLeft: 22.5,
-//           paddingRight: 22
-//         }}>
-//           <Text>Hello</Text>
-//       </TouchableOpacity>
-//     ),
-//   gestureEnabled: true
-// });
 
 function App() {
   return (
@@ -35,15 +19,37 @@ function App() {
           component={ContactsListScreen}
           options={({navigation}) => ({
             title: 'Contacts',
-            headerRight: () => (
-              <Button onPress={() => navigation.navigate('IndividualContacts')} title="Right" />
-            ),
+            // headerLeft: () => ( // TO-DO: Implement icons for Search
+            //   <Button onPress={() => navigation.navigate('IndividualContacts')} title="Search" color={colors.THEME_COLOR} />
+            // ),
+            // headerRight: () => ( // TO-DO: Implement icons for Add
+            //   <Button onPress={() => navigation.navigate('IndividualContacts')} title="Add" color={colors.THEME_COLOR} />
+            // ),
+          })
+          } />
+        <Stack.Screen
+          name="IndividualContact"
+          component={IndividualContactScreen}
+          options={({navigation}) => ({
+            title: '',
             headerLeft: () => (
-              <Button onPress={() => navigation.navigate('IndividualContacts')} title="Left" />
+              <View
+                style={{
+                  paddingLeft: 10
+                }}>
+                <Button onPress={() => navigation.navigate('ContactsList')} title="Cancel" color={colors.THEME_COLOR} />
+              </View>
+            ),
+            headerRight: () => (
+              <View
+                style={{
+                  paddingRight: 10
+                }}>
+                <Button onPress={() => console.log('Save edits to data store')} title="Save" color={colors.THEME_COLOR} />
+              </View>
             ),
           })
           } />
-        <Stack.Screen name="IndividualContacts" component={IndividualContactsScreen} options={{title: ''}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

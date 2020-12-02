@@ -14,7 +14,7 @@ const ContactsListScreen = () => {
   return (
     <ScrollView style={styles.container}>
       {data.map((contact) => {
-        return <Contact key={contact.id} contact={contact} />;
+        return <Contact key={contact.id} contact={contact}/>;
       }
       )}
     </ScrollView>
