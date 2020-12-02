@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { useNavigation, useRoute, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import ContactsListScreen from './screens/ContactsListScreen';
@@ -39,17 +39,9 @@ function App() {
                 }}>
                 <Button onPress={() => navigation.navigate('ContactsList')} title="Cancel" color={colors.THEME_COLOR} />
               </View>
-            ),
-            headerRight: () => (
-              <View
-                style={{
-                  paddingRight: 10
-                }}>
-                <Button onPress={() => console.log('Save edits to data store')} title="Save" color={colors.THEME_COLOR} />
-              </View>
-            ),
+            )
           })
-          } />
+         } />
       </Stack.Navigator>
     </NavigationContainer>
   );
