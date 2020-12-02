@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useCallback} from 'react'
-import { ScrollView, RefreshControl, StyleSheet } from 'react-native';
-
-// UI Components
-import {Contact} from '../components/Contact';
+import React, {useState, useEffect, useCallback} from 'react';
+import { View, ScrollView, RefreshControl, StyleSheet } from 'react-native';
 
 // Colors
 import colors from '../assets/colors/colors';
+
+// UI Components
+import {Contact} from '../components/Contact';
 
 // Dataset
 import data from '../data/data.json';
@@ -34,15 +34,16 @@ const ContactsListScreen = ({route}) => {
 
   return (
     <ScrollView 
-      style={styles.container}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
-      {contacts.map((contact) => {
-        return <Contact key={contact.id} contact={contact}/>;
-      }
-      )}
+      <View style={styles.container}>
+        {contacts.map((contact) => {
+            return <Contact key={contact.id} contact={contact}/>;
+          })
+        }
+      </View>
     </ScrollView>
   )
 }
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 5,
     paddingLeft: 20,
+    paddingBottom: 20,
     backgroundColor: colors.BACKGROUND_COLOR,
   },
 });

@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react'
-import { View, ScrollView, Text, TextInput, StyleSheet, Button, Platform, KeyboardAvoidingView } from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import { View, ScrollView, Text, TextInput, StyleSheet, Button, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import colors from '../assets/colors/colors';
@@ -186,8 +186,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // borderBottomColor: colors.BORDER_COLOR,
-    // borderBottomWidth: 1,
     paddingHorizontal: 20,
     height: 50
   },

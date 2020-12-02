@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { useNavigation, useRoute, NavigationContainer } from '@react-navigation/native';
+import { View, TouchableOpacity, Button } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import ContactsListScreen from './screens/ContactsListScreen';
@@ -19,12 +20,27 @@ function App() {
           component={ContactsListScreen}
           options={({navigation}) => ({
             title: 'Contacts',
-            // headerLeft: () => ( // TO-DO: Implement icons for Search
-            //   <Button onPress={() => navigation.navigate('IndividualContacts')} title="Search" color={colors.THEME_COLOR} />
-            // ),
-            // headerRight: () => ( // TO-DO: Implement icons for Add
-            //   <Button onPress={() => navigation.navigate('IndividualContacts')} title="Add" color={colors.THEME_COLOR} />
-            // ),
+            headerLeft: () => (
+              <TouchableOpacity
+                activeOpacity={0.5}
+                style={{
+                  paddingLeft: 20
+                }}
+                onPress={() => console.log('Search for contact')}
+              >
+                <MaterialCommunityIcons name="magnify" size={30} color={colors.THEME_COLOR}/>
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                activeOpacity={0.5}
+                style={{
+                  paddingRight: 20
+                }}
+                onPress={() => console.log('Add new contact')}>
+                <MaterialCommunityIcons name="plus" size={30} color={colors.THEME_COLOR}/>
+              </TouchableOpacity>
+            ),
           })
           } />
         <Stack.Screen

@@ -8,20 +8,20 @@ shown as in screen1.png. [DONE]
 * Clicking on any contact, will redirect the user to the Screen2 as shown in screen2.png [DONE]
 
 * At Screen2, the user will be able to edit the contact’s information. First Name and Last
-Name are required fields, while Email and Phone are optional fields.
+Name are required fields, while Email and Phone are optional fields. [DONE]
 
 * Screen 2 should be scrollable and clicking “next” in the keyboard, must bring the user to
-the next input field.
+the next input field. [DONE]
 
-* Clicking on the Save button, will update the list at Screen1.
+* Clicking on the Save button, will update the list at Screen1. [DONE]
 
 * A pull to refresh at Screen 1 will force the App to refresh the list according to the
-information retrieved from data.json.
+information retrieved from data.json. [DONE]
 
-* The search and + button must be there, but the functionality can be omitted.
+* The search and + button must be there, but the functionality can be omitted. [DONE]
 
 * You can use any required dependency to finish up the task, but it must be kept to
-minimal usage. Using lesser dependency will be an added advantage as well.
+minimal usage. Using lesser dependency will be an added advantage as well. [DONE]
 
 Additional information: Color code: #ff8c00
 

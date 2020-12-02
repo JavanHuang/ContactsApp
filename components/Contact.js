@@ -1,9 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+// Colors
 import colors from '../assets/colors/colors';
 
+// UI Components
 import {ContactIcon} from './ContactIcon';
 
 export const Contact = ({contact}) => {

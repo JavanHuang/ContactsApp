@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
+// Colors
 import colors from '../assets/colors/colors';
 
 export const ContactIcon = ({size}) => {
