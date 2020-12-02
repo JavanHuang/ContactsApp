@@ -10,7 +10,7 @@ import {TextBorder} from '../components/TextBorder';
 function IndividualContactScreen({route}) {
   const navigation = useNavigation();
 
-  const {contact} = route.params;
+  const {contact, action} = route.params;
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
   const [email, setEmail] = useState(contact.email);
@@ -31,13 +31,18 @@ function IndividualContactScreen({route}) {
       return;
     }
 
-    navigation.navigate('ContactsList', {changedContact: {
-      id: contact.id,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phoneNumber
-    }})
+    navigation.navigate('ContactsList', 
+      {
+        action: 'save',
+        contact: {
+          id: contact.id,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phoneNumber
+        }
+      }
+    )
   };
   
   const renderSaveButton = () => {

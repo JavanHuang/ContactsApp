@@ -12,11 +12,12 @@ export const Contact = ({contact}) => {
   const navigation = useNavigation();
 
   const navigateToContact = () => {
-    navigation.navigate('IndividualContact', {contact});
+    navigation.navigate('IndividualContact', {contact, action: 'save'});
   };
   
   return (
     <TouchableOpacity
+      activeOpacity={0.5}
       onPress={() => navigateToContact()}
       style={styles.contactContainer}>
       <ContactIcon size={60}/>

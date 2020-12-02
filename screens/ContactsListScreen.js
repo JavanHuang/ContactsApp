@@ -13,14 +13,23 @@ import data from '../data/data.json';
 const ContactsListScreen = ({route}) => {
   const [contacts, setContacts] = useState(data);
   const [refreshing, setRefreshing] = useState(false);
+
   // Assumption: Data is in local state, no requirement to append changes to json file.
   useEffect(() => {
-    if (route.params?.changedContact) {
-      const changedContact = route.params.changedContact;
-      const contactToReplaceIndex = contacts.findIndex((contact) => contact.id === changedContact.id);
-
+    if (route.params?.action && route.params?.contact) {
       let updatedContacts = [...contacts];
-      updatedContacts.splice(contactToReplaceIndex, 1, changedContact);
+      const {contact: changedContact, action} = route.params;
+
+      if (action === 'save') {
+        const contactToReplaceIndex = contacts.findIndex((contact) => contact.id === changedContact.id);
+        updatedContacts.splice(contactToReplaceIndex, 1, changedContact);
+      }
+
+      if (action === 'add') {
+        // temporary solution to generating unique keys for contact list
+        changedContact.id = `${changedContact.firstName}_${changedContact.lastName}`
+        updatedContacts.push(changedContact);
+      }
 
       setContacts(updatedContacts);
     }

@@ -12,6 +12,11 @@ import colors from './assets/colors/colors';
 const Stack = createStackNavigator();
 
 function App() {
+  const addNewContact = (navigation) => {
+    console.log('Add new contact');
+    navigation.navigate('IndividualContact', {contact: {}, action: 'add'});
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="ContactsList">
@@ -37,7 +42,7 @@ function App() {
                 style={{
                   paddingRight: 20
                 }}
-                onPress={() => console.log('Add new contact')}>
+                onPress={() => addNewContact(navigation)}>
                 <MaterialCommunityIcons name="plus" size={30} color={colors.THEME_COLOR}/>
               </TouchableOpacity>
             ),
